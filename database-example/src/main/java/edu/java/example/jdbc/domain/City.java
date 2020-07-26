@@ -27,4 +27,9 @@ public class City {
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
+
+    @Override
+    public String toString() {
+        return "\nCity code: " + cityId + "\nCity: " + cityName;
+    }
 }
