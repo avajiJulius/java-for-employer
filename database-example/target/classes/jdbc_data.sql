@@ -55,6 +55,14 @@ create table jdbc_person (
     foreign key(street_id) references jdbc_street(street_id) on delete restrict
 );
 
+insert into jdbc_person(forename, surname, patronymic, b_day, city_id, street_id, building)
+values ('Петр','Пежемский','Иванович', '1994-12-2', 4012, 26,'A2'),
+('Иван','Летучев','Александрович','1993-5-12', 495, 17,'12/2'),
+('Ирина','Вознесенская','Петровна','2000-2-13', 812, 6,'73/75'),
+('Алексей','Болдырев','Генадевич','1994-12-2', 4012, 31,'3B'),
+('Мария','Музыка','Эдуардовна','1899-3-27', 495, 15,'14C'),
+('Варвара','Троцкая','Игровена','1996-11-17', 812, 3,'7');
+
 create table jdbc_passport (
     passport_id serial,
     person_id integer not null,
@@ -65,3 +73,16 @@ create table jdbc_passport (
     primary key(passport_id),
     foreign key(person_id) references jdbc_person(person_id) on delete restrict
 );
+
+insert into jdbc_passport(person_id, seria, number, issue_date, issue_department)
+values (1, '1234', '56789', '2000-3-21', 'V'),
+(1, '1324', '65789', '2006-1-12', 'V'),
+(1, '1243', '56798', '2015-11-5', 'V'),
+(2, '1673', '56448', '1999-4-12', 'K'),
+(2, '4567', '77448', '2003-7-22', 'K'),
+(3, '4545', '78448', '1997-5-19', 'N'),
+(3, '6767', '77477', '2005-7-12', 'N'),
+(4, '7534', '12347', '2013-7-26', 'Z'),
+(5, '8423', '68547', '2017-9-1', 'K'),
+(6, '1239', '09234', '1997-3-7', 'M'),
+(6, '6657', '12357', '2008-5-20', 'M');

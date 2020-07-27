@@ -69,4 +69,12 @@ public class Passport {
     public void setIssueDepartment(String issueDepartment) {
         this.issueDepartment = issueDepartment;
     }
+
+    @Override
+    public String toString() {
+        return "\nСерия: " + seria
+                + "\nНомер: " + number
+                + "\nДата выдачи: " + issueDate
+                + "\nОтдел выдачи: " + issueDepartment;
+    }
 }

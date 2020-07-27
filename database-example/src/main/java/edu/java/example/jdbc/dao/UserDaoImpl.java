@@ -74,7 +74,6 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
         }
-        System.out.printf("Ваш ID: %d", id);
         return id;
     }
 
@@ -88,8 +87,6 @@ public class UserDaoImpl implements UserDao {
                 stmt.setString(3, pas.getNumber());
                 stmt.setDate(4, java.sql.Date.valueOf(pas.getIssueDate()));
                 stmt.setString(5, pas.getIssueDepartment());
-
-                stmt.executeUpdate();
 
             }
         }

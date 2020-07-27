@@ -41,6 +41,6 @@ public class Street {
 
     @Override
     public String toString() {
-        return "Street: " + streetName + "\n";
+        return city + "," + streetName + "(" + streetId + ")" + ", ";
     }
 }

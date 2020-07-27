@@ -1,6 +1,7 @@
 package edu.java.example.jdbc.dao;
 
 import edu.java.example.jdbc.domain.*;
+import edu.java.example.jdbc.exception.NullPassportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,6 +74,9 @@ public class UserManagerDaoImpl implements UserManagerDao{
             rs.close();
         } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
+        } catch (NullPassportException e) {
+            LOGGER.error("Паспорт отсутствует");
+            System.err.print("Паспорт отсутствует");
         }
         return persons;
     }
@@ -111,6 +115,9 @@ public class UserManagerDaoImpl implements UserManagerDao{
 
         } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
+        } catch (NullPassportException e) {
+            LOGGER.error("Паспорт отсутствует");
+            System.err.print("Паспорт отсутствует");
         }
         return persons;
     }
@@ -149,15 +156,20 @@ public class UserManagerDaoImpl implements UserManagerDao{
 
         } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
+        } catch (NullPassportException e) {
+            LOGGER.error("Паспорт отсутствует");
+            System.err.print("Паспорт отсутствует");
         }
         return persons;
     }
 
 
-    private void getPassports(Connection con, List<Person> persons) throws SQLException {
+    private void getPassports(Connection con, List<Person> persons) throws SQLException, NullPassportException {
         String add = "(" + persons.stream().map(p -> String.valueOf(p.getPersonId()))
                 .collect(Collectors.joining(",")) + ")";
-        System.out.println(add);
+        if("()".equals(add)){
+            throw new NullPassportException();
+        }
 
         Map<Long, Person> maps = persons.stream()
                 .collect(Collectors.toMap(p -> p.getPersonId(), p -> p));

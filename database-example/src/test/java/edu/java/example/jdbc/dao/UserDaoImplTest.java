@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 public class UserDaoImplTest {
 
     private DictionaryDao dao = new DictionaryDaoImpl();
+    private UserManagerDao managerDao = new UserManagerDaoImpl();
 
     @Test
     public void savePersonalData() {
@@ -40,8 +41,9 @@ public class UserDaoImplTest {
 
 
         UserDao user = new UserDaoImpl();
-        user.savePersonalData(person);
-
+        Long userId = user.savePersonalData(person);
+        int currentId = managerDao.getAllUsers().size();
+        Assert.assertTrue(userId == currentId);
     }
 
     @Test
@@ -62,11 +64,12 @@ public class UserDaoImplTest {
         passport.setSeria("1234");
         passport.setNumber("567890");
         passport.setIssueDate(LocalDate.of(2014, 7,9));
-        passport.setIssueDepartment(null);
+        passport.setIssueDepartment("J");
         person.addPassports(passport);
 
 
         UserDao user = new UserDaoImpl();
-        user.editPersonalData(14L, person);
+        Long id = user.editPersonalData(7L, person);
+
     }
 }

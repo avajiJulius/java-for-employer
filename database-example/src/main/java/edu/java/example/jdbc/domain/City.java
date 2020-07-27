@@ -30,6 +30,6 @@ public class City {
 
     @Override
     public String toString() {
-        return "\nCity code: " + cityId + "\nCity: " + cityName;
+        return "\nГород " + cityName + "(" + cityId + ")";
     }
 }

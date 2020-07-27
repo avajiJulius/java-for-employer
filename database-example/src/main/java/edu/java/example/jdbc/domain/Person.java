@@ -3,6 +3,7 @@ package edu.java.example.jdbc.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Person {
     private Long personId;
@@ -103,9 +104,20 @@ public class Person {
         if(passports == null)
             passports = new ArrayList<>(4);
         passports.add(passport);
+
     }
 
 
 
-
+    @Override
+    public String toString() {
+        return "Персональный ID: " + personId
+                + "\nИмя: " + forename
+                + "\nФамилия: " + surname
+                + "\nОтчество: " + patronymic
+                + "\nДата рождения: " + birthDay
+                + "\nАдрес: " + street + building
+                + "\nПаспорта: \n" + passports.stream().map(Passport::toString).collect(Collectors.toList())
+                + "\n\n>>>>>>>>>>>>>>>>>>>>>>\n\n";
+    }
 }

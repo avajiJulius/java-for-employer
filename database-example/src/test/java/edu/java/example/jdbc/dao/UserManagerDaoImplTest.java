@@ -12,14 +12,9 @@ public class UserManagerDaoImplTest {
 
     private UserManagerDao dao = new UserManagerDaoImpl();
 
-    @Test
-    public void getAllUsers() {
-        List<Person> allUsers = dao.getAllUsers();
-        Assert.assertTrue(allUsers.size() == 9);
-    }
 
     @Test
-    public void findUser() {
+    public void testFindUser() {
         List<Person> usersName = dao.findUser("Полина", "Кузнецова", "Петровна");
         List<Person> usersAddress = dao.findUser(4012L, 32L);
         Assert.assertTrue(usersName.size() == 1);
