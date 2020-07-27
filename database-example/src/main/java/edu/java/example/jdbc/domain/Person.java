@@ -10,21 +10,25 @@ public class Person {
     private String surname;
     private String patronymic;
     private LocalDate birthDay;
+    private City city;
+    private Street street;
+    private String building;
     private List<Passport> passports;
-    private Address address;
 
     public Person() {
     }
 
-    public Person(Long personId, String forename, String surname, String patronymic,
-                  LocalDate birthDay, List<Passport> passports, Address address) {
+    public Person(Long personId, String forename, String surname, String patronymic, LocalDate birthDay,
+                  City city, Street street, String building, List<Passport> passports) {
         this.personId = personId;
         this.forename = forename;
         this.surname = surname;
         this.patronymic = patronymic;
         this.birthDay = birthDay;
+        this.city = city;
+        this.street = street;
+        this.building = building;
         this.passports = passports;
-        this.address = address;
     }
 
     public Long getPersonId() {
@@ -67,6 +71,30 @@ public class Person {
         this.birthDay = birthDay;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Street getStreet() {
+        return street;
+    }
+
+    public void setStreet(Street street) {
+        this.street = street;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
     public List<Passport> getPassports() {
         return passports;
     }
@@ -77,11 +105,7 @@ public class Person {
         passports.add(passport);
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+
+
 }
