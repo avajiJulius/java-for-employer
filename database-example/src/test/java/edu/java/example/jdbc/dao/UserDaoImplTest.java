@@ -67,6 +67,6 @@ public class UserDaoImplTest {
 
 
         UserDao user = new UserDaoImpl();
-        user.editPersonalData(7L, person);
+        user.editPersonalData(14L, person);
     }
 }
