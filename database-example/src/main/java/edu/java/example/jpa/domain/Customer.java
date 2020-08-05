@@ -2,6 +2,7 @@ package edu.java.example.jpa.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "jpa_customer")
@@ -18,8 +19,9 @@ public class Customer {
     private String patronymic;
     @Column(name = "b_day")
     private LocalDate birthDay;
-    @OneToOne()
-    private CustomerBasket basket;
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+            mappedBy = "customer")
+    private List<CustomerOrder> orderList;
 
     public Customer() {
     }
@@ -62,5 +64,13 @@ public class Customer {
 
     public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public List<CustomerOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<CustomerOrder> orderList) {
+        this.orderList = orderList;
     }
 }
